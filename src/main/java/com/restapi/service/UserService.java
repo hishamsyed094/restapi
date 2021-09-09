@@ -1,20 +1,15 @@
 package com.restapi.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
 
 import com.restapi.model.User;
-import com.restapi.repo.UserRepository;
 
-@Service
-public class UserService {
-
-	@Autowired
-	UserRepository userRepository;
-
-	public User addUser(User user) {
-		User u = userRepository.insert(user);
-		return u;
-	}
-
+public interface UserService {
+	User addUser(User user);
+	User updateUser(User user);
+	User lockUser(User user);
+	void deleteUser(User user);
+	Optional<User> searchUser(String id);
+	List<User> AllUsers();
 }
